@@ -9,7 +9,7 @@ data:extend({
   {
     type = "explosion",
     name = "cupric-asteroid-explosion-1",
-    icon = "__cupric-asteroids__/graphics/icons/cupric-asteroid-chunk.png",
+    icon = "__wood-universe-assets__/graphics/icons/cupric-asteroid-chunk.png",
     flags = {"not-on-map"},
     hidden = true,
     height = 0,
@@ -64,7 +64,7 @@ data:extend({
   {
     type = "explosion",
     name = "cupric-asteroid-explosion-2",
-    icon = "__cupric-asteroids__/graphics/icons/small-cupric-asteroid.png",
+    icon = "__wood-universe-assets__/graphics/icons/small-cupric-asteroid.png",
     flags = {"not-on-map"},
     hidden = true,
     height = 0,
@@ -162,7 +162,7 @@ data:extend({
   {
     type = "explosion",
     name = "cupric-asteroid-explosion-3",
-    icon = "__cupric-asteroids__/graphics/icons/medium-cupric-asteroid.png",
+    icon = "__wood-universe-assets__/graphics/icons/medium-cupric-asteroid.png",
     flags = {"not-on-map"},
     hidden = true,
     height = 0,
@@ -260,7 +260,7 @@ data:extend({
   {
     type = "explosion",
     name = "cupric-asteroid-explosion-4",
-    icon = "__cupric-asteroids__/graphics/icons/big-cupric-asteroid.png",
+    icon = "__wood-universe-assets__/graphics/icons/big-cupric-asteroid.png",
     flags = {"not-on-map"},
     hidden = true,
     height = 0,
@@ -367,7 +367,7 @@ data:extend({
   {
     type = "explosion",
     name = "cupric-asteroid-explosion-5",
-    icon = "__cupric-asteroids__/graphics/icons/huge-cupric-asteroid.png",
+    icon = "__wood-universe-assets__/graphics/icons/huge-cupric-asteroid.png",
     flags = {"not-on-map"},
     hidden = true,
     height = 0,

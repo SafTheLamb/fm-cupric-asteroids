@@ -7,7 +7,7 @@ particle_animations.get_cupric_asteroid_particle_small_pictures = function(optio
   local options = options or {}
   return {
     sheet = {
-      filename = "__cupric-asteroids__/graphics/particle/asteroid-particle/cupric-asteroid-particle-small.png",
+      filename = "__wood-universe-assets__/graphics/particle/asteroid-particle/cupric-asteroid-particle-small.png",
       priority = "extra-high",
       width = 14,
       height = 16,
@@ -25,7 +25,7 @@ particle_animations.get_cupric_asteroid_particle_medium_pictures = function(opti
   local options = options or {}
   return {
     sheet = {
-      filename = "__cupric-asteroids__/graphics/particle/asteroid-particle/cupric-asteroid-particle-medium.png",
+      filename = "__wood-universe-assets__/graphics/particle/asteroid-particle/cupric-asteroid-particle-medium.png",
       priority = "extra-high",
       width = 22,
       height = 20,
@@ -43,7 +43,7 @@ particle_animations.get_cupric_asteroid_particle_big_pictures = function(options
   local options = options or {}
   return {
     sheet = {
-      filename = "__cupric-asteroids__/graphics/particle/asteroid-particle/cupric-asteroid-particle-big.png",
+      filename = "__wood-universe-assets__/graphics/particle/asteroid-particle/cupric-asteroid-particle-big.png",
       priority = "extra-high",
       width = 36,
       height = 36,
@@ -61,7 +61,7 @@ particle_animations.get_cupric_asteroid_particle_top_small_pictures = function(o
   local options = options or {}
   return {
     sheet = {
-      filename = "__cupric-asteroids__/graphics/particle/asteroid-particle/cupric-asteroid-particle-top-small.png",
+      filename = "__wood-universe-assets__/graphics/particle/asteroid-particle/cupric-asteroid-particle-top-small.png",
       priority = "extra-high",
       width = 62,
       height = 56,
@@ -79,7 +79,7 @@ particle_animations.get_cupric_asteroid_particle_top_big_pictures = function(opt
   local options = options or {}
   return {
     sheet = {
-      filename = "__cupric-asteroids__/graphics/particle/asteroid-particle/cupric-asteroid-particle-top-big.png",
+      filename = "__wood-universe-assets__/graphics/particle/asteroid-particle/cupric-asteroid-particle-top-big.png",
       priority = "extra-high",
       width = 82,
       height = 86,

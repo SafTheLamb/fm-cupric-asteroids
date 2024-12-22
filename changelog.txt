@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.0.0
+  Changes:
+    - Add settings to modify byproducts from advanced metallic asteroid crushing
+    - Migrate assets to separate Wood Universe Assets mod
+
+---------------------------------------------------------------------------------------------------
 Version: 0.9.0
   Major Features:
     - Added new Cupric asteroid, with yields copper ore when crushed, and can provide trace amounts of uranium ore with advanced crushing

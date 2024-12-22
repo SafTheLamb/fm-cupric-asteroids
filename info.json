@@ -1,15 +1,16 @@
 {
   "name": "cupric-asteroids",
   "title": "Cupric Asteroids",
-  "description": "Adds a new type of asteroid that gives earlier access to copper in space",
+  "description": "Adds a new type of asteroid that gives earlier access to copper in space.",
   "author": "SafTheLamb",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "factorio_version": "2.0",
-  "homepage": "https://github.com/safthelamb/cupric-asteroids",
+  "homepage": "https://github.com/SafTheLamb/cupric-asteroids",
   "dependencies": [
     "base >= 2.0.7",
-    "fdsl >= 0.1.2",
-    "space-age"
+    "fdsl >= 0.1.5",
+    "space-age",
+    "wood-universe-assets >= 1.0.0"
   ],
   "space_travel_required": true
 }

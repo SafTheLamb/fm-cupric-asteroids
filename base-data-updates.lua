@@ -16,6 +16,17 @@ for _,asteroid_type in pairs(asteroid_types) do
   end
 end
 
+local metallic_byproduct = settings.startup["cupric-asteroids-metallic-byproduct"].value
+if metallic_byproduct ~= "copper-ore" then
+  frep.replace_result("advanced-metallic-asteroid-crushing", "copper-ore", metallic_byproduct)
+end
+
+local metallic_triproduct = settings.startup["cupric-asteroids-metallic-triproduct"].value
+if metallic_triproduct ~= "none" and metallic_triproduct ~= metallic_byproduct then
+  local byproduct_result = frep.scale_result("advanced-metallic-asteroid-crushing", metallic_byproduct, {amount=0.5})
+  frep.add_result("advanced-metallic-asteroid-crushing", {type="item", name=metallic_triproduct, amount=byproduct_result.amount})
+end
+
 -------------------------------------------------------------------------- Asteroid 
 
 local asteroid_map = {

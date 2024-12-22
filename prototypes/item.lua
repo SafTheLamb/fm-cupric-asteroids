@@ -4,7 +4,7 @@ data:extend({
   {
     type = "item",
     name = "cupric-asteroid-chunk",
-    icon = "__cupric-asteroids__/graphics/icons/cupric-asteroid-chunk.png",
+    icon = "__wood-universe-assets__/graphics/icons/cupric-asteroid-chunk.png",
     subgroup = "space-material",
     order = "a[metallic]b-e[chunk]",
     inventory_move_sound = space_age_item_sounds.rock_inventory_move,
