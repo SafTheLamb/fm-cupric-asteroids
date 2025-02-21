@@ -1,4 +1,16 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.0.2
+  Changes:
+    - Change Cupric asteroids to yield uranium ore and stone by default for advanced asteroid processing
+
+---------------------------------------------------------------------------------------------------
+Version: 1.0.1
+  Graphics:
+    - Update icon for Advanced metallic asteroid crushing to account for its new byproducts (if set)
+  Minor Features:
+    - Evaluate compatibility with brevven's Lead and Titanium mods
+
+---------------------------------------------------------------------------------------------------
 Version: 1.0.0
   Changes:
     - Add settings to modify byproducts from advanced metallic asteroid crushing
