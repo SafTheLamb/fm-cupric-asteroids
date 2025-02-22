@@ -3,7 +3,7 @@
   "title": "Cupric Asteroids",
   "description": "Adds a new type of asteroid that gives earlier access to copper in space.",
   "author": "SafTheLamb",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "factorio_version": "2.0",
   "homepage": "https://github.com/SafTheLamb/cupric-asteroids",
   "dependencies": [

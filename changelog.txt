@@ -1,7 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.0.3
+  Changes:
+    - Change secondary Advanced metallic asteroid processing byproduct from stone to none
+    - Remove copper ore as a byproduct option
+
+---------------------------------------------------------------------------------------------------
 Version: 1.0.2
   Changes:
-    - Change Cupric asteroids to yield uranium ore and stone by default for advanced asteroid processing
+    - Change Cupric asteroids to yield uranium ore and stone by default for Advanced metallic asteroid processing
 
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.1
