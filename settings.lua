@@ -1,4 +1,10 @@
 data:extend({
+  {
+    type = "bool-setting",
+    name = "cupric-asteroids-rebalanced-reprocessing",
+    setting_type = "startup",
+    default_value = true,
+  },
   -- choose the byproduct for advanced metallic asteroid crushing
   {
     type = "string-setting",

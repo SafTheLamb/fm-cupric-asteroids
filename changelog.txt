@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.0.4
+  Minor Features:
+    - Add setting to control whether asteroid reprocessing should be rebalanced
+  Compatibility:
+    - Add compatibility with Rocky Asteroids
+    - Fix compatibility with the Dyson Sphere mod (modification is now done in data-updates.lua)
+
+---------------------------------------------------------------------------------------------------
 Version: 1.0.3
   Changes:
     - Change secondary Advanced metallic asteroid processing byproduct from stone to none
