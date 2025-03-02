@@ -1,5 +1,10 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.0.4
+Version: 1.1.1
+  Bugfixes:
+    - Fix localization for Balanced asteroid reprocessing
+
+---------------------------------------------------------------------------------------------------
+Version: 1.1.0
   Minor Features:
     - Add setting to control whether asteroid reprocessing should be rebalanced
   Compatibility:
