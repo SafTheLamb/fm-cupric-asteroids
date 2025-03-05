@@ -18,44 +18,53 @@ if settings.startup["cupric-asteroids-rebalanced-reprocessing"].value then
   end
 end
 
-local new_byproducts = {}
-local metallic_byproduct = settings.startup["cupric-asteroids-metallic-byproduct"].value
-if metallic_byproduct ~= "copper-ore" then
-  new_byproducts[1] = metallic_byproduct
-  frep.replace_result("advanced-metallic-asteroid-crushing", "copper-ore", metallic_byproduct)
+local ore_icons = {
+  ["iron-ore"] = {"__base__/graphics/icons/iron-ore.png", "__base__/graphics/icons/iron-ore-2.png", "__base__/graphics/icons/iron-ore-1.png"},
+  ["copper-ore"] = {"__base__/graphics/icons/copper-ore.png", "__base__/graphics/icons/copper-ore-2.png", "__base__/graphics/icons/copper-ore-1.png"},
+  ["uranium-ore"] = {"__base__/graphics/icons/uranium-ore.png", "__base__/graphics/icons/uranium-ore-2.png", "__base__/graphics/icons/uranium-ore-3.png"},
+  ["tungsten-ore"] = {"__space-age__/graphics/icons/tungsten-ore.png", "__space-age__/graphics/icons/tungsten-ore-2.png", "__space-age__/graphics/icons/tungsten-ore-3.png"},
+  ["holmium-ore"] = {"__space-age__/graphics/icons/holmium-ore.png", "__space-age__/graphics/icons/holmium-ore.png", "__space-age__/graphics/icons/holmium-ore.png"},
+  ["stone"] = {"__base__/graphics/icons/stone.png", "__base__/graphics/icons/stone-1.png", "__base__/graphics/icons/stone-3.png"}
+}
+
+local function update_advanced_asteroid_crushing(asteroid_type, main_product, default_byproduct)
+  local setting_name_root = "cupric-asteroids-"..asteroid_type
+  local recipe_name = "advanced-"..asteroid_type.."-asteroid-crushing"
+
+  local new_byproducts = {}
+  local byproduct = settings.startup[setting_name_root.."-byproduct"].value
+  if byproduct ~= "copper-ore" then
+    new_byproducts[1] = byproduct
+    frep.replace_result(recipe_name, default_byproduct, byproduct)
+  end
+
+  local triproduct = settings.startup["cupric-asteroids-metallic-triproduct"].value
+  if triproduct ~= "none" and triproduct ~= byproduct then
+    new_byproducts[2] = triproduct
+    local byproduct_result = frep.scale_result(recipe_name, byproduct, {amount=0.5})
+    frep.add_result(recipe_name, {type="item", name=triproduct, amount=byproduct_result.amount})
+  end
+
+  if #new_byproducts > 0 then
+    local recipe = data.raw.recipe[recipe_name]
+    recipe.icons = {}
+    local has_triproduct = (new_byproducts[2] ~= nil)
+    local product_1 = has_triproduct and byproduct or main_product
+    local product_2 = has_triproduct and new_byproducts[2] or new_byproducts[1]
+    local item = data.raw.item[asteroid_type.."-asteroid-chunk"]
+
+    recipe.icons = {
+      {icon=ore_icons[product_1][2], icon_size=64, scale=0.25, shift={-8,-8}, draw_background=false},
+      {icon=ore_icons[product_2][2], icon_size=64, scale=0.25, shift={8,-8}, draw_background=false},
+      {icon=ore_icons[product_1][1], icon_size=64, scale=0.25, shift={-8,8}, draw_background=true},
+      {icon=ore_icons[product_2][1], icon_size=64, scale=0.25, shift={8,8}, draw_background=true},
+      {icon=item.icon, icon_size=64, scale=0.45, draw_background=true},
+    }
+  end
 end
 
-local metallic_triproduct = settings.startup["cupric-asteroids-metallic-triproduct"].value
-if metallic_triproduct ~= "none" and metallic_triproduct ~= metallic_byproduct then
-  new_byproducts[2] = metallic_triproduct
-  local byproduct_result = frep.scale_result("advanced-metallic-asteroid-crushing", metallic_byproduct, {amount=0.5})
-  frep.add_result("advanced-metallic-asteroid-crushing", {type="item", name=metallic_triproduct, amount=byproduct_result.amount})
-end
-
-if #new_byproducts > 0 then
-  local ore_icons = {
-    ["iron-ore"] = {"__base__/graphics/icons/iron-ore.png", "__base__/graphics/icons/iron-ore-2.png", "__base__/graphics/icons/iron-ore-1.png"},
-    ["copper-ore"] = {"__base__/graphics/icons/copper-ore.png", "__base__/graphics/icons/copper-ore-2.png", "__base__/graphics/icons/copper-ore-1.png"},
-    ["uranium-ore"] = {"__base__/graphics/icons/uranium-ore.png", "__base__/graphics/icons/uranium-ore-2.png", "__base__/graphics/icons/uranium-ore-3.png"},
-    ["tungsten-ore"] = {"__space-age__/graphics/icons/tungsten-ore.png", "__space-age__/graphics/icons/tungsten-ore-2.png", "__space-age__/graphics/icons/tungsten-ore-3.png"},
-    ["holmium-ore"] = {"__space-age__/graphics/icons/holmium-ore.png", "__space-age__/graphics/icons/holmium-ore.png", "__space-age__/graphics/icons/holmium-ore.png"},
-    ["stone"] = {"__base__/graphics/icons/stone.png", "__base__/graphics/icons/stone-1.png", "__base__/graphics/icons/stone-3.png"}
-  }
-
-  local recipe = data.raw.recipe["advanced-metallic-asteroid-crushing"]
-  recipe.icons = {}
-  local has_triproduct = (new_byproducts[2] ~= nil)
-  local product_1 = has_triproduct and metallic_byproduct or "iron-ore"
-  local product_2 = has_triproduct and new_byproducts[2] or new_byproducts[1]
-
-  recipe.icons = {
-    {icon=ore_icons[product_1][2], icon_size=64, scale=0.25, shift={-8,-8}, draw_background=false},
-    {icon=ore_icons[product_2][2], icon_size=64, scale=0.25, shift={8,-8}, draw_background=false},
-    {icon=ore_icons[product_1][1], icon_size=64, scale=0.25, shift={-8,8}, draw_background=true},
-    {icon=ore_icons[product_2][1], icon_size=64, scale=0.25, shift={8,8}, draw_background=true},
-    {icon="__space-age__/graphics/icons/metallic-asteroid-chunk.png", icon_size=64, scale=0.45, draw_background=true},
-  }
-end
+update_advanced_asteroid_crushing("cupric", "copper-ore", "uranium-ore")
+update_advanced_asteroid_crushing("metallic", "iron-ore", "copper-ore")
 
 -------------------------------------------------------------------------- Compatibility
 

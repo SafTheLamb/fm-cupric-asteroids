@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.2.0
+  Major Features:
+    - Add settings for controlling byproducts from advanced cupric asteroid processing
+  Changes:
+    - Re-add copper ore as a byproduct option from metallic asteroids
+    - Double uranium ore byproduct from 2 to 4 for Advanced cupric asteroid crushing to match Metallic asteroids
+
+---------------------------------------------------------------------------------------------------
 Version: 1.1.1
   Bugfixes:
     - Fix localization for Balanced asteroid reprocessing

@@ -37,7 +37,7 @@ data:extend({
     energy_required = 5,
     results = {
       {type = "item", name = "copper-ore", amount = 5 * asteroid_metallic_resources_multiplier},
-      {type = "item", name = "uranium-ore", amount = 2},
+      {type = "item", name = "uranium-ore", amount = 4},
       {type = "item", name = "cupric-asteroid-chunk", amount = 1, probability = 0.05}
     },
     allow_productivity = true,
