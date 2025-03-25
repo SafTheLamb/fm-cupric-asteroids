@@ -3,14 +3,15 @@
   "title": "Cupric Asteroids",
   "description": "Adds a new type of asteroid that gives earlier access to copper in space.",
   "author": "SafTheLamb",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "factorio_version": "2.0",
   "homepage": "https://github.com/SafTheLamb/cupric-asteroids",
   "dependencies": [
     "base >= 2.0.7",
     "fdsl >= 0.1.5",
     "space-age",
-    "wood-universe-assets >= 1.0.0"
+    "wood-universe-assets >= 1.0.0",
+    "(?) Rocky-Asteroids"
   ],
   "space_travel_required": true
 }

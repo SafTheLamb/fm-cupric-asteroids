@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.2.2
+  Changes:
+    - Add cupric asteroids to asteroid productivity
+
+---------------------------------------------------------------------------------------------------
 Version: 1.2.1
   Bugfixes:
     - All cupric asteroids tried to convince you they were "Small"
