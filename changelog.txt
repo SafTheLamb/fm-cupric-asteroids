@@ -1,13 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.3.0
+  Changes:
+    - Import graphics and remove dependency on Wooden Universe Assets
+---------------------------------------------------------------------------------------------------
 Version: 1.2.2
   Changes:
     - Add cupric asteroids to asteroid productivity
-
 ---------------------------------------------------------------------------------------------------
 Version: 1.2.1
   Bugfixes:
     - All cupric asteroids tried to convince you they were "Small"
-
 ---------------------------------------------------------------------------------------------------
 Version: 1.2.0
   Major Features:
@@ -15,12 +17,10 @@ Version: 1.2.0
   Changes:
     - Re-add copper ore as a byproduct option from metallic asteroids
     - Double uranium ore byproduct from 2 to 4 for Advanced cupric asteroid crushing to match Metallic asteroids
-
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.1
   Bugfixes:
     - Fix localization for Balanced asteroid reprocessing
-
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.0
   Minor Features:
@@ -28,31 +28,26 @@ Version: 1.1.0
   Compatibility:
     - Add compatibility with Rocky Asteroids
     - Fix compatibility with the Dyson Sphere mod (modification is now done in data-updates.lua)
-
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.3
   Changes:
     - Change secondary Advanced metallic asteroid processing byproduct from stone to none
     - Remove copper ore as a byproduct option
-
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.2
   Changes:
     - Change Cupric asteroids to yield uranium ore and stone by default for Advanced metallic asteroid processing
-
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.1
   Graphics:
     - Update icon for Advanced metallic asteroid crushing to account for its new byproducts (if set)
   Minor Features:
     - Evaluate compatibility with brevven's Lead and Titanium mods
-
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.0
   Changes:
     - Add settings to modify byproducts from advanced metallic asteroid crushing
     - Migrate assets to separate Wood Universe Assets mod
-
 ---------------------------------------------------------------------------------------------------
 Version: 0.9.0
   Major Features:

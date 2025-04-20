@@ -1,22 +1,8 @@
 local frep = require("__fdsl__.lib.recipe")
-local asteroid_util = require("__space-age__.prototypes.planet.asteroid-spawn-definitions")
 
 local asteroid_types = {"metallic", "carbonic", "oxide", "cupric"}
 
--------------------------------------------------------------------------- Recipe changes
-
-frep.add_result("metallic-asteroid-reprocessing", {type="item", name="cupric-asteroid-chunk", amount=1, probability=0.2})
-frep.add_result("carbonic-asteroid-reprocessing", {type="item", name="cupric-asteroid-chunk", amount=1, probability=0.2})
-frep.add_result("oxide-asteroid-reprocessing", {type="item", name="cupric-asteroid-chunk", amount=1, probability=0.2})
-if settings.startup["cupric-asteroids-rebalanced-reprocessing"].value then
-  for _,asteroid_type in pairs(asteroid_types) do
-    local recipe = data.raw.recipe[asteroid_type.."-asteroid-reprocessing"]
-    local ingredient_name = asteroid_type.."-asteroid-chunk"
-    for _,result in pairs(recipe.results) do
-      result.probability = result.name == ingredient_name and 0.35 or 0.15
-    end
-  end
-end
+-------------------------------------------------------------------------- Advanced asteroid crushing
 
 local ore_icons = {
   ["iron-ore"] = {"__base__/graphics/icons/iron-ore.png", "__base__/graphics/icons/iron-ore-2.png", "__base__/graphics/icons/iron-ore-1.png"},
@@ -66,8 +52,23 @@ end
 update_advanced_asteroid_crushing("cupric", "copper-ore", "uranium-ore")
 update_advanced_asteroid_crushing("metallic", "iron-ore", "copper-ore")
 
--------------------------------------------------------------------------- Compatibility
+-------------------------------------------------------------------------- Asteroid reprocessing
 
-if mods["Rocky-Asteroids"] then
-  frep.add_result("cupric-asteroid-crushing", {type="item", name="stone", amount=5, probability=0.3})
+frep.add_result("metallic-asteroid-reprocessing", {type="item", name="cupric-asteroid-chunk", amount=1, probability=0.2})
+frep.add_result("carbonic-asteroid-reprocessing", {type="item", name="cupric-asteroid-chunk", amount=1, probability=0.2})
+frep.add_result("oxide-asteroid-reprocessing", {type="item", name="cupric-asteroid-chunk", amount=1, probability=0.2})
+if settings.startup["cupric-asteroids-rebalanced-reprocessing"].value then
+  for _,asteroid_type in pairs(asteroid_types) do
+    local recipe = data.raw.recipe[asteroid_type.."-asteroid-reprocessing"]
+    local ingredient_name = asteroid_type.."-asteroid-chunk"
+    for _,result in pairs(recipe.results) do
+      result.probability = result.name == ingredient_name and 0.35 or 0.15
+    end
+  end
+end
+
+-------------------------------------------------------------------------- Space science
+
+if settings.startup["cupric-asteroids-modify-science"].value then
+  frep.replace_ingredient("space-science-pack", "iron-plate", "electronic-circuit")
 end

@@ -4,7 +4,7 @@ data:extend({
   {
     type = "recipe",
     name = "cupric-asteroid-crushing",
-    icon = "__wood-universe-assets__/graphics/icons/cupric-asteroid-crushing.png",
+    icon = "__cupric-asteroids__/graphics/icons/cupric-asteroid-crushing.png",
     category = "crushing",
     subgroup="space-crushing",
     order = "b-a-ab",
@@ -25,7 +25,7 @@ data:extend({
     type = "recipe",
     name = "advanced-cupric-asteroid-crushing",
     localised_name = {"recipe-name.advanced-cupric-asteroid-crushing"},
-    icon = "__wood-universe-assets__/graphics/icons/advanced-cupric-asteroid-crushing.png",
+    icon = "__cupric-asteroids__/graphics/icons/advanced-cupric-asteroid-crushing.png",
     category = "crushing",
     subgroup="space-crushing",
     order = "c-a-bb",
@@ -46,7 +46,7 @@ data:extend({
   {
     type = "recipe",
     name = "cupric-asteroid-reprocessing",
-    icon = "__wood-universe-assets__/graphics/icons/cupric-asteroid-reprocessing.png",
+    icon = "__cupric-asteroids__/graphics/icons/cupric-asteroid-reprocessing.png",
     category = "crushing",
     subgroup="space-crushing",
     order = "b-b-ab",
@@ -64,3 +64,21 @@ data:extend({
     allow_decomposition = false
   },
 })
+
+if settings.startup["cupric-asteroids-military"].value then
+  data:extend({
+    {
+      type = "recipe",
+      name = "smart-rounds-magazine",
+      category = "electronics-or-assembling",
+      enabled = false,
+      surface_conditions = {{property="gravity", min=0, max=0}},
+      energy_required = 2,
+      ingredients = {
+        {type="item", name="firearm-magazine", amount=1},
+        {type="item", name="electronic-circuit", amount=2}
+      },
+      results = {{type="item", name="smart-rounds-magazine", amount=1}}
+    }
+  })
+end
