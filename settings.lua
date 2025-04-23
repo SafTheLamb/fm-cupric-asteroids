@@ -13,7 +13,6 @@ data:extend({
     default_value = true,
     order = "b[military]",
   },
-  -- choose the byproduct for advanced cupric asteroid crushing
   {
     type = "string-setting",
     name = "cupric-asteroids-cupric-byproduct",
@@ -22,7 +21,6 @@ data:extend({
     default_value = "uranium-ore",
     order = "c[asteroids]-a[cupric]-b[byproduct]",
   },
-  -- choose a third product for advanced cupric asteroid crushing
   {
     type = "string-setting",
     name = "cupric-asteroids-cupric-triproduct",
@@ -31,7 +29,6 @@ data:extend({
     default_value = "none",
     order = "c[asteroids]-a[cupric]-c[triproduct]",
   },
-  -- choose the byproduct for advanced metallic asteroid crushing
   {
     type = "string-setting",
     name = "cupric-asteroids-metallic-byproduct",
@@ -40,7 +37,6 @@ data:extend({
     default_value = "uranium-ore",
     order = "c[asteroids]-b[metallic]-b[byproduct]",
   },
-  -- choose a third product for advanced metallic asteroid crushing
   {
     type = "string-setting",
     name = "cupric-asteroids-metallic-triproduct",

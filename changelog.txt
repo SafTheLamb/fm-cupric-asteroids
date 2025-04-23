@@ -6,6 +6,8 @@ Date: 2025-04-20
     - Smart rounds magazine are now craftable in space (optional)
   Changes:
     - Import graphics and remove dependency on Wooden Universe Assets
+  Compatibility:
+    - When BZ Tin is installed, Alternative carbonic asteroid crushing (Crushing Industry replaces this)
 ---------------------------------------------------------------------------------------------------
 Version: 1.2.2
   Changes:

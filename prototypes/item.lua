@@ -7,7 +7,7 @@ data:extend({
     name = "cupric-asteroid-chunk",
     icon = "__cupric-asteroids__/graphics/icons/cupric-asteroid-chunk.png",
     subgroup = "space-material",
-    order = "a[metallic]b-e[chunk]",
+    order = "cb[cupric]-e[chunk]",
     inventory_move_sound = space_age_item_sounds.rock_inventory_move,
     pick_sound = space_age_item_sounds.rock_inventory_pickup,
     drop_sound = space_age_item_sounds.rock_inventory_move,
@@ -23,36 +23,26 @@ if settings.startup["cupric-asteroids-military"].value then
       name = "smart-rounds-magazine",
       icon = "__cupric-asteroids__/graphics/icons/smart-rounds-magazine.png",
       ammo_category = "bullet",
-      ammo_type =
-      {
-        cooldown_modifier = 8/6.5, -- does as much damage per bullet as piercing rounds, but DPS is between yellow and red ammo
-        action =
-        {
+      ammo_type = {
+        cooldown_modifier = 10/8, -- does as much damage per bullet as piercing rounds, but DPS is the same
+        range_modifier = 1.2,
+        action = {
           type = "direct",
-          action_delivery =
-          {
+          action_delivery = {
             type = "instant",
-            source_effects =
-            {
+            source_effects = {
               type = "create-explosion",
               entity_name = "explosion-gunshot"
             },
-            target_effects =
-            {
+            target_effects = {
               {
                 type = "create-entity",
                 entity_name = "explosion-hit",
                 offsets = {{0, 1}},
                 offset_deviation = {{-0.5, -0.5}, {0.5, 0.5}}
               },
-              {
-                type = "damage",
-                damage = {amount = 8, type = "physical"}
-              },
-              {
-                type = "activate-impact",
-                deliver_category = "bullet"
-              }
+              {type="damage", damage={amount=10, type="physical"}},
+              {type="activate-impact", deliver_category="bullet"}
             }
           }
         }
@@ -68,3 +58,19 @@ if settings.startup["cupric-asteroids-military"].value then
     },
   })
 end
+
+-------------------------------------------------------------------------- Settings proxy items
+
+local function create_proxy_item(name, icon)
+  return {
+    type = "item",
+    name = name,
+    icon = icon,
+    hidden = true,
+    stack_size = 1
+  }
+end
+
+data:extend({
+  create_proxy_item("wcu-proxy-smart-rounds", "__cupric-asteroids__/graphics/icons/smart-rounds-magazine.png")
+})
