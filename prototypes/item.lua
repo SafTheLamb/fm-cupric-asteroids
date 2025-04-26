@@ -24,8 +24,7 @@ if settings.startup["cupric-asteroids-military"].value then
       icon = "__cupric-asteroids__/graphics/icons/smart-rounds-magazine.png",
       ammo_category = "bullet",
       ammo_type = {
-        cooldown_modifier = 10/8, -- does as much damage per bullet as piercing rounds, but DPS is the same
-        range_modifier = 1.2,
+        cooldown_modifier = 10/9,
         action = {
           type = "direct",
           action_delivery = {

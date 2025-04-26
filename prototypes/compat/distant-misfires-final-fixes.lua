@@ -25,11 +25,14 @@
 --     }
 --   })
 
---   -- table.remove(data.raw.ammo["smart-rounds-magazine"].ammo_type.action, 1)
+--   -- insert script effect to apply missing damage
+--   table.insert(data.raw.projectile["smart-rounds-magazine"].action[1].action_delivery.target_effects, {
+--     type = "script",
+--     effect_id = "cadm-smart-round-hit"
+--   })
 
 --   data.raw.ammo["smart-rounds-magazine"].ammo_type.target_type = "entity"
 --   data.raw.projectile["smart-rounds-magazine"].direction_only = false
---   -- data.raw.projectile["smart-rounds-magazine"].hit_at_collision_position = false
 --   data.raw.projectile["smart-rounds-magazine"].turning_speed_increases_exponentially_with_projectile_speed = true
 --   data.raw.projectile["smart-rounds-magazine"].acceleration = 0.08
 --   data.raw.projectile["smart-rounds-magazine"].turn_speed = 0.003
