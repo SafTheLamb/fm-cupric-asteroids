@@ -24,7 +24,8 @@ if settings.startup["cupric-asteroids-military"].value then
       icon = "__cupric-asteroids__/graphics/icons/smart-rounds-magazine.png",
       ammo_category = "bullet",
       ammo_type = {
-        cooldown_modifier = 10/9,
+        cooldown_modifier = mods["distant-misfires"] and 1/0.9 or 10/8,
+        range_modifier = mods["distant-misfires"] and 1 or 1.2,
         action = {
           type = "direct",
           action_delivery = {
