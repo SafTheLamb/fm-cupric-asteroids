@@ -8,7 +8,7 @@ if settings.startup["cupric-asteroids-military"].value then
       effects = {
         {type="unlock-recipe", recipe="smart-rounds-magazine"},
       },
-      prerequisites = {"space-science-pack", "rocketry"},
+      prerequisites = {"space-science-pack", "rocketry", "military-3"},
       unit =
       {
         count = 500,

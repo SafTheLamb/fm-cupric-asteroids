@@ -1,106 +1,95 @@
--- local math2d = require("math2d")
+local math2d = require("math2d")
 
--- local function get_damage_modifier(projectile)
---   local modifier_data = storage.smart_round_damage_modifier[projectile.name]
---   local damage_scalar = 1 + projectile.force.get_ammo_damage_modifier("bullet")
---   if modifier_data.double_modify then
---     damage_scalar = damage_scalar * damage_scalar
---   end
---   return modifier_data.quality_scalar * damage_scalar
--- end
+local ammo_inventory_index = {
+  ["ammo-turret"] = defines.inventory.turret_ammo,
+  ["character"] = defines.inventory.character_ammo,
+  ["car"] = defines.inventory.car_ammo,
+  ["spider-vehicle"] = defines.inventory.spider_ammo
+}
 
--- local function get_extra_damage_amount(projectile, target)
---   local damage_amount = storage.smart_round_damage_amount * (get_damage_modifier(projectile) - 1)-- * (1+.3*projectile.quality.level) * damage_increase
---   local damage_resistance = target.prototype.resistances["physical"]
---   if damage_resistance then
---     damage_amount = damage_amount + math.min(damage_resistance.decrease, storage.smart_round_damage_amount)
---   end
---   return damage_amount
--- end
+local has_gun_index = {
+  ["character"] = true,
+  ["car"] = true,
+  ["spider-vehicle"] = true
+}
 
--- function on_script_trigger_effect(event)
---   if event.effect_id == "cadm-smart-round-fired" then
---     local surface = game.surfaces[event.surface_index]
+local function get_ammo_quality_modifier(source_entity)
+  if not source_entity then return 1 end
+  local inventory_index = ammo_inventory_index[source_entity.type]
+  if inventory_index then
+    local inventory = source_entity.get_inventory(inventory_index)
+    if inventory then
+      if has_gun_index[source_entity.type] then
+        local item_stack = inventory[source_entity.selected_gun_index]
+        if item_stack then
+          return 1 + 0.3*item_stack.quality.level
+        end
+      else
+        for i=1,#inventory do
+          if inventory[i].name == "smart-rounds-magazine" then
+            return 1 + 0.3*inventory[i].quality.level
+          end
+        end
+      end
+    end
+  end
+  return 1
+end
 
---     local quality = "normal"
---     local projectile_name = "smart-rounds-magazine"
---     if event.source_entity then
---       local inventory = event.source_entity.get_inventory(defines.inventory.turret_ammo)
---       if inventory then
---         for i=1,#inventory do
---           if inventory[i].name == "smart-rounds-magazine" then
---             quality = inventory[i].quality.name
---             break
---           end
---         end
---       end
-      
---       if event.source_entity.type == "ammo-turret" then
---         projectile_name = "smart-rounds-magazine-turret-"..quality
---       else
---         projectile_name = "smart-rounds-magazine-"..quality
---       end
---     end
+local function get_bonus_damage_modifier(source_entity)
+  if source_entity then
+    local damage_scalar = 1 + source_entity.force.get_ammo_damage_modifier("bullet")
+    if source_entity.type == "ammo-turret" then
+      return damage_scalar * (1 + source_entity.force.get_turret_attack_modifier(source_entity.name))
+    else
+      return damage_scalar
+    end
+  end
+  return 1
+end
 
---     local target_position = event.target_entity and event.target_entity.position or event.target_position
---     if not event.target_entity then
---       local asteroids = surface.find_entities_filtered{
---         type = "asteroid",
---         position = event.target_position,
---         radius = 2
---       }
---       local shortest_distance_squared = 1000.0
---       for _,asteroid in pairs(asteroids) do
---         local distance_squared = math2d.position.distance_squared(asteroid.position, target_position)
---         if distance_squared < shortest_distance_squared then
---           event.target_entity = asteroid
---         end
---       end
---     end
+function on_script_trigger_effect(event)
+  if event.effect_id == "cadm-smart-round-fired" then
+    local surface = game.surfaces[event.surface_index]
 
---     local projectile = surface.create_entity{
---       name = projectile_name,
---       source = event.source_entity,
---       position = event.source_position,
---       force = event.source_entity and event.source_entity.force,
---       target = event.target_entity or event.target_position,
---       cause = event.cause_entity,
---       quality = quality,
---       speed = 0.5
---     }
-    
---     if projectile then
---       local vector = math2d.position.subtract(target_position, event.source_position)
---       projectile.orientation = math.atan2(-vector.x, vector.y) / (2*math.pi) + 0.5 + 0.08 - 0.16 * math.random()
---     end
---   elseif event.effect_id == "cadm-smart-round-hit" then
---     local projectile = event.source_entity
---     local target = event.target_entity
---     if projectile and target then
---       target.damage(get_extra_damage_amount(projectile, target), projectile.force, "physical", projectile)
---     end
---   end
--- end
+    if not event.target_entity then
+      if event.source_entity and event.source_entity.shooting_target then
+        event.target_entity = event.source_entity.shooting_target
+      end
+    end
 
--- local function on_configuration_changed(change_data)
---   storage.smart_round_base_damage = 10
---   storage.smart_round_damage_modifier = {}
+    local projectile = surface.create_entity{
+      name = "smart-rounds-magazine",
+      source = event.source_entity,
+      position = event.source_position,
+      force = event.source_entity and event.source_entity.force,
+      target = event.target_entity or event.target_position,
+      cause = event.cause_entity,
+      base_damage_modifiers = {damage_modifier=get_ammo_quality_modifier(event.source_entity)},
+      bonus_damage_modifiers = {damage_modifier=get_bonus_damage_modifier(event.source_entity)},
+      speed = 0.5
+    }
 
---   storage.smart_round_damage_modifier["smart-rounds-magazine"] = 0
---   for _,quality in pairs(prototypes.quality) do
---     storage.smart_round_damage_modifier["smart-rounds-magazine-"..quality.name] = {quality_scalar=1+0.3*quality.level}
---     storage.smart_round_damage_modifier["smart-rounds-magazine-turret-"..quality.name] = {quality_scalar=1+0.3*quality.level, double_modify=true}
---   end
--- end
+    if projectile then
+      local target_position = event.target_entity and event.target_entity.position or event.target_position
+      local vector = math2d.position.subtract(target_position, event.source_position)
+      projectile.orientation = math.atan2(-vector.x, vector.y) / (2*math.pi) + 0.5 + 0.08 - 0.16 * math.random()
+    end
+  end
+end
 
--- script.on_configuration_changed(on_configuration_changed)
+local function on_configuration_changed(change_data)
+  storage.smart_round_base_damage = 10
+end
 
--- script.on_event(defines.events.on_script_trigger_effect, on_script_trigger_effect)
+script.on_configuration_changed(on_configuration_changed)
 
--- local function set_smart_rounds_damage(amount)
---   storage.smart_round_damage_amount = amount
--- end
+script.on_event(defines.events.on_script_trigger_effect, on_script_trigger_effect)
 
--- remote.add_interface("cupric-asteroids", {
---   set_smart_rounds_damage = set_smart_rounds_damage
--- })
+local function set_smart_round_damage(amount)
+  storage.smart_round_damage_amount = amount
+end
+
+remote.add_interface("cupric-asteroids", {
+  set_smart_rounds_damage = set_smart_round_damage
+})

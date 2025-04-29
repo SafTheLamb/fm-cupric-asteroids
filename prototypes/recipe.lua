@@ -68,10 +68,11 @@ if settings.startup["cupric-asteroids-military"].value then
       name = "smart-rounds-magazine",
       enabled = false,
       surface_conditions = {{property="gravity", min=0, max=0}},
+      vb_preserve_conditions = true, -- Tell Voidblock to keep the surface_conditions intact no matter what
       energy_required = 2,
       ingredients = {
         {type="item", name="firearm-magazine", amount=1},
-        {type="item", name="electronic-circuit", amount=2}
+        {type="item", name="electronic-circuit", amount=1}
       },
       results = {{type="item", name="smart-rounds-magazine", amount=1}}
     }
