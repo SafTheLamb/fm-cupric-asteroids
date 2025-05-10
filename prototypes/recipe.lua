@@ -83,26 +83,26 @@ if mods["bztin"] then
   data:extend({
     {
       type = "recipe",
-      name = "alternative-carbonic-asteroid-crushing",
+      name = "cupric-asteroid-crushing-tin",
       icons = {
-        {icon="__space-age__/graphics/icons/carbonic-asteroid-crushing.png"},
-        {icon="__space-age__/graphics/icons/carbon.png", scale=0.25, shift={-8, 0}},
+        {icon="__cupric-asteroids__/graphics/icons/cupric-asteroid-crushing.png"},
+        {icon="__base__/graphics/icons/copper-ore.png", scale=0.25, shift={-8, 0}},
         {icon="__bztin__/graphics/icons/tin-ore.png", scale=0.25, shift={8, 0}}
       },
       category = "crushing",
       subgroup = "space-crushing",
-      order = "b-a-z-c",
+      order = "b-a-z-d",
       enabled = false,
       auto_recycle = false,
       allow_productivity = true,
       allow_decomposition = false,
       hide_from_signal_gui = false,
       energy_required = 5,
-      ingredients = {{type="item", name="carbonic-asteroid-chunk", amount=1}},
+      ingredients = {{type="item", name="cupric-asteroid-chunk", amount=1}},
       results = {
-        {type="item", name="carbon", amount=5},
-        {type="item", name="tin-ore", amount=3},
-        {type="item", name="carbonic-asteroid-chunk", amount=1, probability=0.1}
+        {type="item", name="tin-ore", amount=5},
+        {type="item", name="copper-ore", amount=3},
+        {type="item", name="cupric-asteroid-chunk", amount=1, probability=0.1}
       }
     }
   })
