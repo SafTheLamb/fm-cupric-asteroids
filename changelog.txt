@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.2
-Date: 2025-05-10
+Date: 2025-05-11
   Compatibility:
     - BZ Tin compatibility is now handled with an alternative cupric asteroid crushing recipe that yields tin
 ---------------------------------------------------------------------------------------------------
