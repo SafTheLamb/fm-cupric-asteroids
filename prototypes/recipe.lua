@@ -79,7 +79,7 @@ if settings.startup["cupric-asteroids-military"].value then
   })
 end
 
-if mods["bztin"] then
+if mods["bztin"] and settings.startup["cupric-asteroids-tin"].value then
   data:extend({
     {
       type = "recipe",

@@ -10,7 +10,10 @@ local ore_icons = {
   ["uranium-ore"] = {"__base__/graphics/icons/uranium-ore.png", "__base__/graphics/icons/uranium-ore-2.png", "__base__/graphics/icons/uranium-ore-3.png"},
   ["tungsten-ore"] = {"__space-age__/graphics/icons/tungsten-ore.png", "__space-age__/graphics/icons/tungsten-ore-2.png", "__space-age__/graphics/icons/tungsten-ore-3.png"},
   ["holmium-ore"] = {"__space-age__/graphics/icons/holmium-ore.png", "__space-age__/graphics/icons/holmium-ore.png", "__space-age__/graphics/icons/holmium-ore.png"},
-  ["stone"] = {"__base__/graphics/icons/stone.png", "__base__/graphics/icons/stone-1.png", "__base__/graphics/icons/stone-3.png"}
+  ["stone"] = {"__base__/graphics/icons/stone.png", "__base__/graphics/icons/stone-1.png", "__base__/graphics/icons/stone-3.png"},
+
+  ["lead-ore"] = {"__bzlead__/graphics/icons/lead-ore.png", "__bzlead__/graphics/icons/lead-ore-2.png", "__bzlead__/graphics/icons/lead-ore-1.png"},
+  ["titanium-ore"] = {"__bztitanium__/graphics/icons/titanium-ore.png", "__bztitanium__/graphics/icons/titanium-ore-2.png", "__bztitanium__/graphics/icons/titanium-ore.png"}
 }
 
 local function update_advanced_asteroid_crushing(asteroid_type, main_product, default_byproduct)
@@ -50,7 +53,7 @@ local function update_advanced_asteroid_crushing(asteroid_type, main_product, de
 end
 
 update_advanced_asteroid_crushing("cupric", "copper-ore", "uranium-ore")
-update_advanced_asteroid_crushing("metallic", "iron-ore", "copper-ore")
+update_advanced_asteroid_crushing("metallic", mods["bzlead"] and "lead-ore" or "iron-ore", "copper-ore")
 
 -------------------------------------------------------------------------- Asteroid reprocessing
 

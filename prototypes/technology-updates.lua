@@ -8,8 +8,8 @@ table.insert(data.raw.technology["asteroid-productivity"].effects,
 table.insert(data.raw.technology["asteroid-productivity"].effects,
   {type="change-recipe-productivity", recipe="advanced-cupric-asteroid-crushing", change=0.1})
 
-if mods["bztin"] then
-  ftech.add_unlock("space-science-pack", "alternative-carbonic-asteroid-crushing")
+if mods["bztin"] and settings.startup["cupric-asteroids-tin"].value then
+  ftech.add_unlock("space-science-pack", "cupric-asteroid-crushing-tin")
   table.insert(data.raw.technology["asteroid-productivity"].effects,
-    {type="change-recipe-productivity", recipe="alternative-carbonic-asteroid-crushing", change=0.1})
+    {type="change-recipe-productivity", recipe="cupric-asteroid-crushing-tin", change=0.1})
 end
