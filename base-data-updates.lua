@@ -22,7 +22,7 @@ local function update_advanced_asteroid_crushing(asteroid_type, main_product, de
 
   local new_byproducts = {}
   local byproduct = settings.startup[setting_name_root.."-byproduct"].value
-  if byproduct ~= "copper-ore" then
+  if byproduct ~= default_byproduct then
     new_byproducts[1] = byproduct
     frep.replace_result(recipe_name, default_byproduct, byproduct)
   end
