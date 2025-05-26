@@ -2,10 +2,18 @@
 Version: 1.5.1
 Date: ????
   Changes:
+    - Slightly less crash-prone code
+  Compatibility:
+    - Add prismite ore to byproduct options if Iridescent Industry is installed (thanks, S6X!)
 ---------------------------------------------------------------------------------------------------
-Version: 1.4.3
-Date: ????
-  Changes:
+Version: 1.5.0
+Date: 2025-05-19
+  Bugfixes:
+    - Fix uranium ore result being double for advanced cupric asteroid crushing
+  Compatibility:
+    - BZ Tin: Add setting to enable/disable byproduct compatibility
+    - BZ Titanium: Add byproduct option for advanced metallic/cupric asteroid crushing
+    - BZ Lead: Advanced metallic asteroid crushing icon to use BZ Lead ore as the main resource
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.2
 Date: 2025-05-11

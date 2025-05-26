@@ -5,16 +5,22 @@ local asteroid_types = {"metallic", "carbonic", "oxide", "cupric"}
 -------------------------------------------------------------------------- Advanced asteroid crushing
 
 local ore_icons = {
-  ["iron-ore"] = {"__base__/graphics/icons/iron-ore.png", "__base__/graphics/icons/iron-ore-2.png", "__base__/graphics/icons/iron-ore-1.png"},
-  ["copper-ore"] = {"__base__/graphics/icons/copper-ore.png", "__base__/graphics/icons/copper-ore-2.png", "__base__/graphics/icons/copper-ore-1.png"},
-  ["uranium-ore"] = {"__base__/graphics/icons/uranium-ore.png", "__base__/graphics/icons/uranium-ore-2.png", "__base__/graphics/icons/uranium-ore-3.png"},
-  ["tungsten-ore"] = {"__space-age__/graphics/icons/tungsten-ore.png", "__space-age__/graphics/icons/tungsten-ore-2.png", "__space-age__/graphics/icons/tungsten-ore-3.png"},
-  ["holmium-ore"] = {"__space-age__/graphics/icons/holmium-ore.png", "__space-age__/graphics/icons/holmium-ore.png", "__space-age__/graphics/icons/holmium-ore.png"},
-  ["stone"] = {"__base__/graphics/icons/stone.png", "__base__/graphics/icons/stone-1.png", "__base__/graphics/icons/stone-3.png"},
+  ["iron-ore"] = {"__base__/graphics/icons/iron-ore.png", "__base__/graphics/icons/iron-ore-2.png"},
+  ["copper-ore"] = {"__base__/graphics/icons/copper-ore.png", "__base__/graphics/icons/copper-ore-2.png"},
+  ["uranium-ore"] = {"__base__/graphics/icons/uranium-ore.png", "__base__/graphics/icons/uranium-ore-2.png"},
+  ["tungsten-ore"] = {"__space-age__/graphics/icons/tungsten-ore.png", "__space-age__/graphics/icons/tungsten-ore-2.png"},
+  ["holmium-ore"] = {"__space-age__/graphics/icons/holmium-ore.png", "__space-age__/graphics/icons/holmium-ore.png"},
+  ["stone"] = {"__base__/graphics/icons/stone.png", "__base__/graphics/icons/stone-1.png"},
 
-  ["lead-ore"] = {"__bzlead__/graphics/icons/lead-ore.png", "__bzlead__/graphics/icons/lead-ore-2.png", "__bzlead__/graphics/icons/lead-ore-1.png"},
-  ["titanium-ore"] = {"__bztitanium__/graphics/icons/titanium-ore.png", "__bztitanium__/graphics/icons/titanium-ore-2.png", "__bztitanium__/graphics/icons/titanium-ore.png"}
+  ["lead-ore"] = {"__bzlead__/graphics/icons/lead-ore.png", "__bzlead__/graphics/icons/lead-ore-2.png"},
+  ["titanium-ore"] = {"__bztitanium__/graphics/icons/titanium-ore.png", "__bztitanium__/graphics/icons/titanium-ore-2.png"}
 }
+
+if mods["IridescentIndustry"] then
+  ore_icons["prismite-ore"] = {"__IridescentIndustry__/graphics/icons/prismite-ore.png", "__IridescentIndustry__/graphics/icons/variation/prismite-ore-2.png"}
+else
+  ore_icons["prismite-ore"] = {"__Voidcraft__/graphics/icons/prismite-ore.png", "__Voidcraft__/graphics/icons/variation/prismite-ore-2.png"}
+end
 
 local function update_advanced_asteroid_crushing(asteroid_type, main_product, default_byproduct)
   local setting_name_root = "cupric-asteroids-"..asteroid_type
@@ -42,13 +48,15 @@ local function update_advanced_asteroid_crushing(asteroid_type, main_product, de
     local product_2 = has_triproduct and new_byproducts[2] or new_byproducts[1]
     local item = data.raw.item[asteroid_type.."-asteroid-chunk"]
 
-    recipe.icons = {
-      {icon=ore_icons[product_1][2], icon_size=64, scale=0.25, shift={-8,-8}, draw_background=false},
-      {icon=ore_icons[product_2][2], icon_size=64, scale=0.25, shift={8,-8}, draw_background=false},
-      {icon=ore_icons[product_1][1], icon_size=64, scale=0.25, shift={-8,8}, draw_background=true},
-      {icon=ore_icons[product_2][1], icon_size=64, scale=0.25, shift={8,8}, draw_background=true},
-      {icon=item.icon, icon_size=64, scale=0.45, draw_background=true},
-    }
+    if ore_icons[product_1] and ore_icons[product_2] then
+      recipe.icons = {
+        {icon=ore_icons[product_1][2], icon_size=64, scale=0.25, shift={-8,-8}, draw_background=false},
+        {icon=ore_icons[product_2][2], icon_size=64, scale=0.25, shift={8,-8}, draw_background=false},
+        {icon=ore_icons[product_1][1], icon_size=64, scale=0.25, shift={-8,8}, draw_background=true},
+        {icon=ore_icons[product_2][1], icon_size=64, scale=0.25, shift={8,8}, draw_background=true},
+        {icon=item.icon, icon_size=64, scale=0.45, draw_background=true},
+      }
+    end
   end
 end
 

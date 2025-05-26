@@ -54,13 +54,6 @@ data:extend({
   }
 })
 
-if mods["bztitanium"] then
-  table.insert(data.raw["string-setting"]["cupric-asteroids-cupric-byproduct"].allowed_values, "titanium-ore")
-  table.insert(data.raw["string-setting"]["cupric-asteroids-cupric-triproduct"].allowed_values, "titanium-ore")
-  table.insert(data.raw["string-setting"]["cupric-asteroids-metallic-byproduct"].allowed_values, "titanium-ore")
-  table.insert(data.raw["string-setting"]["cupric-asteroids-metallic-triproduct"].allowed_values, "titanium-ore")
-end
-
 if mods["bztin"] then
   data:extend({
     {
@@ -71,4 +64,15 @@ if mods["bztin"] then
       order = "c[compat]-b[tin]"
     }
   })
+end
+
+local function add_byproduct_options(item_name)
+  table.insert(data.raw["string-setting"]["cupric-asteroids-cupric-byproduct"].allowed_values, item_name)
+  table.insert(data.raw["string-setting"]["cupric-asteroids-cupric-triproduct"].allowed_values, item_name)
+  table.insert(data.raw["string-setting"]["cupric-asteroids-metallic-byproduct"].allowed_values, item_name)
+  table.insert(data.raw["string-setting"]["cupric-asteroids-metallic-triproduct"].allowed_values, item_name)
+end
+
+if mods["bztitanium"] then
+  add_byproduct_options("titanium-ore")
 end
