@@ -1,7 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.5.3
+Date: 2025-07-05
+  Bugfixes:
+    - Fix cupric asteroids not appearing around Muluna
+  Compatibility:
+    - Remove Voidcraft patch that is no longer needed
+---------------------------------------------------------------------------------------------------
 Version: 1.5.2
-Date: ????
-  Changes:
+Date: 2025-07-03
+  Bugfixes:
+    - Fix cupric asteroid triproduct being disregarded
 ---------------------------------------------------------------------------------------------------
 Version: 1.5.1
 Date: 2025-05-26
