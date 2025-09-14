@@ -28,16 +28,30 @@ local function update_advanced_asteroid_crushing(asteroid_type, main_product, de
 
   local new_byproducts = {}
   local byproduct = settings.startup[setting_name_root.."-byproduct"].value
-  if byproduct ~= default_byproduct then
+  if byproduct == "none" then
+	frep.remove_result(recipe_name, default_byproduct)
+	if asteroid_type == "metallic" then
+	  frep.modify_result(recipe_name, "iron-ore", {amount=25}) -- Increase the amount given, with the reduced change of recieving another chunk in return.
+	end
+	if asteroid_type == "cupric" then
+	  frep.modify_result(recipe_name, "copper-ore", {amount=15}) -- Increase the amount given, with the reduced change of recieving another chunk in return.
+	end
+  else
+    if byproduct ~= default_byproduct then
     new_byproducts[1] = byproduct
     frep.replace_result(recipe_name, default_byproduct, byproduct)
+    end
   end
 
   local triproduct = settings.startup["cupric-asteroids-metallic-triproduct"].value
-  if triproduct ~= "none" and triproduct ~= byproduct then
+  if triproduct ~= "none" and byproduct ~= "none" and triproduct ~= byproduct then
     new_byproducts[2] = triproduct
     local byproduct_result = frep.scale_result(recipe_name, byproduct, {amount=0.5})
     frep.add_result(recipe_name, {type="item", name=triproduct, amount=byproduct_result.amount})
+  end
+  
+  if byproduct == "none" then
+    settings.startup[setting_name_root.."-byproduct"].value = "none"
   end
 
   if #new_byproducts > 0 then
