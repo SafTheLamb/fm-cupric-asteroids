@@ -13,7 +13,8 @@ local ore_icons = {
   ["stone"] = {"__base__/graphics/icons/stone.png", "__base__/graphics/icons/stone-1.png"},
 
   ["lead-ore"] = {"__bzlead__/graphics/icons/lead-ore.png", "__bzlead__/graphics/icons/lead-ore-2.png"},
-  ["titanium-ore"] = {"__bztitanium__/graphics/icons/titanium-ore.png", "__bztitanium__/graphics/icons/titanium-ore-2.png"}
+  ["titanium-ore"] = {"__bztitanium__/graphics/icons/titanium-ore.png", "__bztitanium__/graphics/icons/titanium-ore-2.png"},
+  ["voidstone"] = {"__ArcanyxAssets__/graphics/icons/voidstone.png", "__ArcanyxAssets__/graphics/icons/variation/voidstone-2.png"},
 }
 
 if mods["IridescentIndustry"] then
@@ -33,7 +34,7 @@ local function update_advanced_asteroid_crushing(asteroid_type, main_product, de
     frep.replace_result(recipe_name, default_byproduct, byproduct)
   end
 
-  local triproduct = settings.startup["cupric-asteroids-metallic-triproduct"].value
+  local triproduct = settings.startup[setting_name_root.."-triproduct"].value
   if triproduct ~= "none" and triproduct ~= byproduct then
     new_byproducts[2] = triproduct
     local byproduct_result = frep.scale_result(recipe_name, byproduct, {amount=0.5})
