@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.5.5
+Date: 2025-11-22
+  Compatibility:
+    - Crushing Industry: Stone is removed as a byproduct option, since crushing industry already adds that
+---------------------------------------------------------------------------------------------------
 Version: 1.5.4
 Date: 2025-11-22
   Compatibility:
