@@ -5,7 +5,7 @@ Date: 2025-11-22
     - Crushing Industry: Stone is removed as a byproduct option, since crushing industry already adds that
 ---------------------------------------------------------------------------------------------------
 Version: 1.5.4
-Date: 2025-11-22
+Date: 2025-11-30
   Compatibility:
     - Arcanyx: Add support for voidstone from asteroids
 ---------------------------------------------------------------------------------------------------
