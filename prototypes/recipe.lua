@@ -1,5 +1,3 @@
-local asteroid_metallic_resources_multiplier = mods["Space-Age-Hardcore-Mode"] and (1 + 0.5 * settings.startup["rocs-hardcore-spaceb-bonus-asteroid-health-percentage"].value / 100) or 1
-
 data:extend({
   {
     type = "recipe",
@@ -13,7 +11,7 @@ data:extend({
     energy_required = 2,
     ingredients = {{type = "item", name = "cupric-asteroid-chunk", amount = 1}},
     results = {
-      {type="item", name="copper-ore", amount=10 * asteroid_metallic_resources_multiplier},
+      {type="item", name="copper-ore", amount=10},
       {type="item", name="cupric-asteroid-chunk", amount=1, probability=0.2}
     },
     allow_productivity = true,
@@ -32,7 +30,7 @@ data:extend({
     energy_required = 5,
     ingredients = {{type = "item", name = "cupric-asteroid-chunk", amount = 1}},
     results = {
-      {type="item", name="copper-ore", amount=5 * asteroid_metallic_resources_multiplier},
+      {type="item", name="copper-ore", amount=5},
       {type="item", name="uranium-ore", amount=4},
       {type="item", name="cupric-asteroid-chunk", amount=1, probability=0.05}
     },
