@@ -2,6 +2,7 @@
 Version: 1.5.7
 Date: ????
   Changes:
+    - Potential fix for https://mods.factorio.com/mod/cupric-asteroids/discussion/69b4ced36bf3efc67eaf1482
 ---------------------------------------------------------------------------------------------------
 Version: 1.5.6
 Date: 2025-12-22

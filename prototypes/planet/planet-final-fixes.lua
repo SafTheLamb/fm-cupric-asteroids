@@ -19,7 +19,7 @@ local function add_cupric_asteroid_spawn_definition(prototype)
         type = old_definition.type,
         probability = old_definition.probability,
         speed = old_definition.speed,
-        spawn_points = old_definition.spawn_points,
+        spawn_points = old_definition.spawn_points and util.table.deepcopy(old_definition.spawn_points) or nil,
         angle_when_stopped = old_definition.angle_when_stopped
       })
     end
