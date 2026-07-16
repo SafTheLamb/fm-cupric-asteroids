@@ -66,15 +66,18 @@ update_advanced_asteroid_crushing("metallic", mods["bzlead"] and "lead-ore" or "
 
 -------------------------------------------------------------------------- Asteroid reprocessing
 
-frep.add_result("metallic-asteroid-reprocessing", {type="item", name="cupric-asteroid-chunk", amount=1, probability=0.2})
-frep.add_result("carbonic-asteroid-reprocessing", {type="item", name="cupric-asteroid-chunk", amount=1, probability=0.2})
-frep.add_result("oxide-asteroid-reprocessing", {type="item", name="cupric-asteroid-chunk", amount=1, probability=0.2})
+frep.add_result("metallic-asteroid-reprocessing", {type="item", name="cupric-asteroid-chunk", amount=1, shared_probability={min=0.8, max=1.0}})
+frep.add_result("carbonic-asteroid-reprocessing", {type="item", name="cupric-asteroid-chunk", amount=1, shared_probability={min=0.8, max=1.0}})
+frep.add_result("oxide-asteroid-reprocessing", {type="item", name="cupric-asteroid-chunk", amount=1, shared_probability={min=0.8, max=1.0}})
 if settings.startup["cupric-asteroids-rebalanced-reprocessing"].value then
   for _,asteroid_type in pairs(asteroid_types) do
     local recipe = data.raw.recipe[asteroid_type.."-asteroid-reprocessing"]
-    local ingredient_name = asteroid_type.."-asteroid-chunk"
+    -- local ingredient_name = asteroid_type.."-asteroid-chunk"
     for _,result in pairs(recipe.results) do
-      result.probability = result.name == ingredient_name and 0.35 or 0.15
+      if result.shared_probability then
+        result.shared_probability.min = 0.8 * result.shared_probability.min
+        result.shared_probability.max = 0.8 * result.shared_probability.max
+      end
     end
   end
 end
