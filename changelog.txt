@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.6.0
-Date: ????
+Date: 2026-07-15
   Changes:
     - Updated to 2.1
     - Chunk reprocessing is now 32%/16%/16%/16% instead of 35%/15%/15%/15% (way simpler to calculate)
