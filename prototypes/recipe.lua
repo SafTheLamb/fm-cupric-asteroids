@@ -87,7 +87,7 @@ if mods["bztin"] and settings.startup["cupric-asteroids-tin"].value then
 				{icon="__base__/graphics/icons/copper-ore.png", scale=0.25, shift={-8, 0}},
 				{icon="__bztin__/graphics/icons/tin-ore.png", scale=0.25, shift={8, 0}}
 			},
-			category = "crushing",
+			categories = {"crushing"},
 			subgroup = "space-crushing",
 			order = "b-a-z-d",
 			enabled = false,
